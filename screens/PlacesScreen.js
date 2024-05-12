@@ -26,11 +26,15 @@ export default function PlacesScreen() {
 
 
   const handleSubmit = () => {
+
+    try {
     if (city.length === 0) {
       return;
     }
 
   const addCity = async (city) => {
+
+    
     //console.log(city_name)
     const response = await fetch(`https://back-my-location.vercel.app/places/`, {
       method: 'POST',
@@ -70,10 +74,20 @@ export default function PlacesScreen() {
 
   addCity(city)
   Keyboard.dismiss()
+    }
+
+    catch (error){
+
+      console.log("erreur l ajout des villes ",  error)
+    
+    }
+
 };
 
 
 const handledelete = (name) => {
+
+  try{
   const deleteCity = async (name) => {
     //console.log(city_name)
 
@@ -89,10 +103,19 @@ const handledelete = (name) => {
   }
 
   deleteCity(name)
+
+}
+catch (error){
+
+  console.log("erreur la de la suppression des villes ",  error)
+
+}
   
 }
 
 const showCity = async () => {
+
+  try{
   //console.log("nickname avant ", user.nickname)
   const reponse = await fetch(`https://back-my-location.vercel.app/places/${user.nickname}`)
   //console.log("reponse", reponse)
@@ -102,6 +125,13 @@ const showCity = async () => {
     {
         setAllCity(allCities.places)
     }     
+
+  } 
+  catch (error){
+
+    console.log("erreur la de la recuperation des villes ",  error)
+  
+  }
 }
 
 

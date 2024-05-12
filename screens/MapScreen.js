@@ -38,8 +38,8 @@ export default function MapScreen() {
   const handleNewPlace = () => {
     
 //////////////////////////////
-
-
+try {
+{
   const addPLace= async () => {
     //console.log(city_name)
     const response = await fetch(`https://back-my-location.vercel.app/places/`, {
@@ -63,7 +63,14 @@ export default function MapScreen() {
 
 //////////////////////////////
 
-    setModalVisible(false);
+    setModalVisible(false);}
+}
+
+catch (error){
+
+  console.log("erreur l ajoute des villes depuis la map",  error)
+
+}
     
   };
 
@@ -75,7 +82,8 @@ export default function MapScreen() {
 
   const getCity = async () => {
     //console.log("nickname avant ", user.nickname)
-    const reponse = await fetch(`https://back-my-location.vercel.app/places/${user.nickname}`)
+    try{
+      const reponse = await fetch(`https://back-my-location.vercel.app/places/${user.nickname}`)
     //console.log("reponse", reponse)
     const allCities = await reponse.json()
     //console.log("AllCities",allCities)
@@ -83,6 +91,12 @@ export default function MapScreen() {
       {
           setAllCity(allCities.places)
       }     
+    }
+    catch (error){
+
+      console.log("erreur l ajout des villes en bdd depuis la map",  error)
+    
+    }
   }
   
   
