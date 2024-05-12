@@ -32,7 +32,7 @@ export default function PlacesScreen() {
 
   const addCity = async (city) => {
     //console.log(city_name)
-    const response = await fetch(`http://192.168.1.35:3000/places/`, {
+    const response = await fetch(`https://back-my-location.vercel.app/places/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ city: city, nickname: user.nickname }),
@@ -77,7 +77,7 @@ const handledelete = (name) => {
   const deleteCity = async (name) => {
     //console.log(city_name)
 
-    const response = await fetch(`http://192.168.1.35:3000/places/`, {
+    const response = await fetch(`https://back-my-location.vercel.app/places/`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ city: name, nickname: user.nickname }),
@@ -94,7 +94,7 @@ const handledelete = (name) => {
 
 const showCity = async () => {
   //console.log("nickname avant ", user.nickname)
-  const reponse = await fetch(`http://192.168.1.35:3000/places/${user.nickname}`)
+  const reponse = await fetch(`https://back-my-location.vercel.app/places/${user.nickname}`)
   //console.log("reponse", reponse)
   const allCities = await reponse.json()
   //console.log("AllCities",allCities)

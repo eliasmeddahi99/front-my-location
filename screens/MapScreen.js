@@ -42,7 +42,7 @@ export default function MapScreen() {
 
   const addPLace= async () => {
     //console.log(city_name)
-    const response = await fetch(`http://192.168.1.35:3000/places/`, {
+    const response = await fetch(`https://back-my-location.vercel.app/places/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ myplace: newPlace, latitude : tempCoordinates.latitude , longitude : tempCoordinates.longitude, nickname: user.nickname }),
@@ -75,7 +75,7 @@ export default function MapScreen() {
 
   const getCity = async () => {
     //console.log("nickname avant ", user.nickname)
-    const reponse = await fetch(`http://192.168.1.35:3000/places/${user.nickname}`)
+    const reponse = await fetch(`https://back-my-location.vercel.app/places/${user.nickname}`)
     //console.log("reponse", reponse)
     const allCities = await reponse.json()
     //console.log("AllCities",allCities)
